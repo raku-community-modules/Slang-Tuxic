@@ -8,4 +8,9 @@ when you need parens around the condition after the keywords `if`, `while` and s
 foo 3, 5;   # 15, as usual
 foo(3, 5);  # also 15, as usual
 foo (3, 5); # 15, /o\
+
+# It also allows to put space before argument lists in method calls:
+42.fmt('-%d-');  # -42-
+42.fmt: '-%d-';  # -42-
+42.fmt ('-%d-'); # -42-
 ```
