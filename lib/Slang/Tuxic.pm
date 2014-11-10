@@ -10,6 +10,24 @@ sub EXPORT(|) {
             <args>
             { self.add_mystery(atkeyish($/, 'identifier'), atkeyish($/, 'args').from, nqp::substr(atkeyish($/, 'args').Str, 0, 1)) }
         }
+        token methodop {
+            [
+            | <longname>
+            | <?[$@&]> <variable> { self.check_variable(atkeyish($/, 'variable')) }
+            | <?['"]>
+                [ <!{$*QSIGIL}> || <!before '"' <-["]>*? [\s|$] > ] # dwim on "$foo."
+                <quote>
+                [ <?before '(' | '.(' | '\\'> || <.panic: "Quoted method name requires parenthesized arguments. If you meant to concatenate two strings, use '~'."> ]
+            ] <.unsp>? \s*
+            [
+                [
+                | <?[(]> <args>
+                | ':' <?before \s | '{'> <!{ $*QSIGIL }> <args=.arglist>
+                ]
+                || <!{ $*QSIGIL }> <?>
+                || <?{ $*QSIGIL }> <?[.]> <?>
+            ] <.unsp>?
+        }
     }
     nqp::bindkey(%*LANG, 'MAIN', %*LANG<MAIN>.HOW.mixin(%*LANG<MAIN>, Tuxic));
 
