@@ -18,10 +18,10 @@ sub EXPORT(|) {
                 [ <!{$*QSIGIL}> || <!before '"' <-["]>*? [\s|$] > ] # dwim on "$foo."
                 <quote>
                 [ <?before '(' | '.(' | '\\'> || <.panic: "Quoted method name requires parenthesized arguments. If you meant to concatenate two strings, use '~'."> ]
-            ] <.unsp>? \s*
+            ] <.unsp>?
             [
                 [
-                | <?[(]> <args>
+                |  <?before  \s*'('>  \s* <args>
                 | ':' <?before \s | '{'> <!{ $*QSIGIL }> <args=.arglist>
                 ]
                 || <!{ $*QSIGIL }> <?>
