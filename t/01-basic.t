@@ -3,7 +3,7 @@ use lib 'lib';
 use Test;
 use Slang::Tuxic;
 
-plan 3;
+plan 6;
 
 sub foo($a, $b) { $a * $b };
 
