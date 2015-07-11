@@ -3,7 +3,7 @@ use lib 'lib';
 use Test;
 use Slang::Tuxic;
 
-plan 7;
+plan 8;
 
 sub foo($a, $b) { $a * $b };
 
@@ -17,3 +17,6 @@ is( (42.fmt: '-%d-'), '-42-', 'foo.bar: baz');
 
 my &bar = sub () { 42 };
 is bar(), 42, 'can declare anonymous sub';
+
+my &baz = sub(){21};
+is baz(), 21, 'can declare anonymous sub';

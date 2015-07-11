@@ -1,10 +1,15 @@
 use nqp;
+use NQPHLL:from<NQP>;
 
 sub EXPORT(|) {
     sub atkeyish(Mu \h, \k) {
         nqp::atkey(nqp::findmethod(h, 'hash')(h), k)
     }
     my role Tuxic {
+        token routine_declarator:sym<sub> {
+            :my $*LINE_NO := HLL::Compiler.lineof(self.orig(), self.from(), :cache(1));
+            <sym> <.end_keyword>? <routine_def('sub')>
+        }
         token term:sym<identifier> {
             :my $pos;
             <identifier>
