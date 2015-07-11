@@ -7,7 +7,12 @@ sub EXPORT(|) {
     my role Tuxic {
         token term:sym<identifier> {
             :my $pos;
-            <identifier> <!{ $*W.is_type([atkeyish($/, 'identifier').Str]) }> <?before <.unsp>|\s*'('> \s* <![:]>
+            <identifier>
+            <!{
+                my $ident = atkeyish($/, 'identifier').Str;
+                $ident eq 'sub'|'if'|'elsif'|'while'|'until'|'for' || $*W.is_type([$ident])
+            }>
+            <?before <.unsp>|\s*'('> \s* <![:]>
             { $pos := $/.CURSOR.pos }
             <args>
             { self.add_mystery(atkeyish($/, 'identifier'), atkeyish($/, 'args').from, nqp::substr(atkeyish($/, 'args').Str, 0, 1)) }
