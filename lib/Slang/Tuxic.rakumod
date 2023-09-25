@@ -1,10 +1,67 @@
-
 my sub atkeyish(Mu \h, \k) {
     use nqp;
     nqp::atkey(nqp::findmethod(h, 'hash')(h), k)
 }
 
 my role Tuxic {
+    token routine-declarator:sym<sub> {
+        <.routine-sub>
+        <.end-keyword>?
+        <routine-def=.key-origin('routine-def', 'sub')>
+    }
+
+    token term:sym<identifier> {
+        :my $pos;
+        <identifier>
+        <!{
+            my $ident = atkeyish($/, 'identifier').Str;
+            $ident eq 'sub'|'if'|'elsif'|'while'|'until'|'for'
+              || $*R.is-identifier-type([$ident])
+        }>
+        <?before <.unsp>|\s*'('> \s* <![:]>
+        { $pos := $/.CURSOR.pos }
+        <args>
+#        {    # XXX not yet supported in RakuAST
+#            self.add-mystery(
+#              atkeyish($/,'identifier'),
+#              atkeyish($/,'args').from,
+#              atkeyish($/,'args').Str.substr(0, 1)
+#            )
+#        }
+    }
+
+    token methodop($*DOTTY) {
+        [
+          | <longname>
+            {
+                self.malformed("class-qualified postfix call")
+                  if ~$<longname> eq '::';
+            }
+
+          | <?[$@&]>
+            <variable>
+            { self.check-variable(atkeyish($/, 'variable')) }
+
+          | <?['"]>
+            [ <!{$*QSIGIL}> || <!before '"' <-["]>*? [\s|$] > ] # dwim on "$foo."
+            <quote>
+            [ <?before '(' | '.(' | '\\'>
+                || <.panic: "Quoted method name requires parenthesized arguments. If you meant to concatenate two strings, use '~'.">
+            ]
+            <.dotty-non-ident($*DOTTY)>
+        ] \s* <.unspace>?
+        [
+          [
+            |  <?before  \s*'('>  \s* <args>
+            | ':' <?before \s | '{'> <!{ $*QSIGIL }> <args=.arglist>
+          ]
+          || <!{ $*QSIGIL }> <?>
+          || <?{ $*QSIGIL }> <?[.]> <?>
+        ] <.unspace>?
+    }
+}
+
+my role Tuxic::Legacy {
     use NQPHLL:from<NQP>;
 
     token routine_declarator:sym<sub> {
@@ -58,7 +115,7 @@ my role Tuxic {
     }
 }
 
-use Slangify Tuxic, Mu;
+use Slangify Tuxic, Mu, Tuxic::Legacy, Mu;
 
 =begin pod
 
