@@ -1,6 +1,8 @@
 Revision history for Slang::Tuxic
   
 {{$NEXT}}
+
+0.0.4  2023-09-25T17:14:52+02:00
     - Bump dependency on Slangify
     - Remove atkeyish NQP hack now Slangify provides an alternative
 

@@ -14,7 +14,7 @@
   },
   "resources": [
   ],
-  "source-url": "git://github.com/raku-communitypmodules/Slang-Tuxic.git",
+  "source-url": "git://github.com/raku-community-modules/Slang-Tuxic.git",
   "tags": [
     "SLANG",
     "WHITESPACE"
