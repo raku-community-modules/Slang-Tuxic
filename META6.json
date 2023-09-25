@@ -1,12 +1,24 @@
 {
-    "perl" : "6.*",
-    "name" : "Slang::Tuxic",
-    "author" : "github:FROGGS",
-    "version" : "0.0.1",
-    "description" : "allows to call subs as: foo (args)",
-    "depends" : [ ],
-    "provides" : {
-        "Slang::Tuxic" : "lib/Slang/Tuxic.pm"
-    },
-    "source-url" : "git://github.com/FROGGS/p6-Slang-Tuxic.git"
+  "auth": "zef:raku-community-modules",
+  "build-depends": [
+  ],
+  "depends": [
+  ],
+  "description": "allow whitespace between subroutine and the opening parenthesis",
+  "license": "Artistic-2.0",
+  "name": "Slang::Tuxic",
+  "perl": "6.d",
+  "provides": {
+    "Slang::Tuxic": "lib/Slang/Tuxic.rakumod"
+  },
+  "resources": [
+  ],
+  "source-url": "git://github.com/raku-communitypmodules/Slang-Tuxic.git",
+  "tags": [
+    "SLANG",
+    "WHITESPACE"
+  ],
+  "test-depends": [
+  ],
+  "version": "0.0.2"
 }

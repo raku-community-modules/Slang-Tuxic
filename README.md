@@ -1,10 +1,14 @@
-## Slang::Tuxic
+[![Actions Status](https://github.com/raku-community-modules/Slang-Tuxic/workflows/test/badge.svg)](https://github.com/raku-community-modules/Slang-Tuxic/actions)
 
-This slang allows you to put whitespace between the name of a subroutine and the opening parenthesis.
-Be aware that this introduces ambiguous situations, like when you want to pass a List to a sub, or
-when you need parenthesis around the condition after the keywords `if`, `while` and so on...
+NAME
+====
 
-```perl6
+Slang::Tuxic - allow whitespace between subroutine and the opening parenthesis
+
+SYNOPSIS
+========
+
+```raku
 foo 3, 5;   # 15, as usual
 foo(3, 5);  # also 15, as usual
 foo (3, 5); # 15, /o\
@@ -14,3 +18,25 @@ foo (3, 5); # 15, /o\
 42.fmt: '-%d-';  # -42-
 42.fmt ('-%d-'); # -42-
 ```
+
+DESCRIPTION
+===========
+
+The `Slang::Tuxic` module adapts the Raku Programming Language syntax to allow you to put whitespace between the name of a subroutine and the opening parenthesis when calling a subroutine.
+
+Be aware that this introduces ambiguous situations, like when you want to pass a List to a sub, or when you need parenthesis around the condition after the keywords `if`, `while` and so on.
+
+AUTHOR
+======
+
+Tobias Leich (FROGGS)
+
+Source can be located at: https://github.com/raku-community-modules/Slang-Tuxic . Comments and Pull Requests are welcome.
+
+COPYRIGHT AND LICENSE
+=====================
+
+Copyright 2014-2018 Tobias Leich, 2023 Raku Community
+
+This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
+
