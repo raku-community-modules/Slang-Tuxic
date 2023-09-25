@@ -3,7 +3,7 @@
   "build-depends": [
   ],
   "depends": [
-    "Slangify:ver<0.0.2+>:auth<zef:lizmat>"
+    "Slangify:ver<0.0.3+>:auth<zef:lizmat>"
   ],
   "description": "allow whitespace between subroutine and the opening parenthesis",
   "license": "Artistic-2.0",
@@ -21,5 +21,5 @@
   ],
   "test-depends": [
   ],
-  "version": "0.0.3"
+  "version": "0.0.4"
 }

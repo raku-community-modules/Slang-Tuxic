@@ -1,8 +1,3 @@
-my sub atkeyish(Mu \h, \k) {
-    use nqp;
-    nqp::atkey(nqp::findmethod(h, 'hash')(h), k)
-}
-
 my role Tuxic {
     token routine-declarator:sym<sub> {
         <.routine-sub>
@@ -14,7 +9,7 @@ my role Tuxic {
         :my $pos;
         <identifier>
         <!{
-            my $ident = atkeyish($/, 'identifier').Str;
+            my $ident = ~$<identifier>;
             $ident eq 'sub'|'if'|'elsif'|'while'|'until'|'for'
               || $*R.is-identifier-type([$ident])
         }>
@@ -23,9 +18,7 @@ my role Tuxic {
         <args>
 #        {    # XXX not yet supported in RakuAST
 #            self.add-mystery(
-#              atkeyish($/,'identifier'),
-#              atkeyish($/,'args').from,
-#              atkeyish($/,'args').Str.substr(0, 1)
+#              $<identifier>, $<args>.from, $<args>.Str.substr(0,1)
 #            )
 #        }
     }
@@ -35,12 +28,12 @@ my role Tuxic {
           | <longname>
             {
                 self.malformed("class-qualified postfix call")
-                  if atkeyish($/, 'longname').Str eq '::';
+                  if ~$<longname> eq '::';
             }
 
           | <?[$@&]>
             <variable>
-            { self.check-variable(atkeyish($/, 'variable')) }
+            { self.check-variable($<variable>) }
 
           | <?['"]>
             [ <!{$*QSIGIL}> || <!before '"' <-["]>*? [\s|$] > ] # dwim on "$foo."
@@ -75,7 +68,7 @@ my role Tuxic::Legacy {
         :my $pos;
         <identifier>
         <!{
-            my $ident = atkeyish($/, 'identifier').Str;
+            my $ident = ~$<identifier>;
             $ident eq 'sub'|'if'|'elsif'|'while'|'until'|'for' || $*W.is_type([$ident])
         }>
         <?before <.unsp>|\s*'('> \s* <![:]>
@@ -83,9 +76,7 @@ my role Tuxic::Legacy {
         <args>
         {
             self.add_mystery(
-              atkeyish($/,'identifier'),
-              atkeyish($/,'args').from,
-              atkeyish($/,'args').Str.substr(0, 1)
+              $<identifier>, $<args>.from, $<args>.Str.substr(0,1)
             )
         }
     }
@@ -95,7 +86,7 @@ my role Tuxic::Legacy {
           | <longname>
           | <?[$@&]>
             <variable>
-            { self.check_variable(atkeyish($/, 'variable')) }
+            { self.check_variable($<variable>) }
 
           | <?['"]>
             [ <!{$*QSIGIL}> || <!before '"' <-["]>*? [\s|$] > ] # dwim on "$foo."

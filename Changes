@@ -1,6 +1,8 @@
 Revision history for Slang::Tuxic
   
 {{$NEXT}}
+    - Bump dependency on Slangify
+    - Remove atkeyish NQP hack now Slangify provides an alternative
 
 0.0.3  2023-09-25T15:34:18+02:00
     - Add preliminary support for the Raku grammar
