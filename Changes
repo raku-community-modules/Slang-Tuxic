@@ -1,4 +1,6 @@
 Revision history for Slang::Tuxic
   
 {{$NEXT}}
+
+0.0.2  2023-09-25T10:59:16+02:00
     - First version in zef ecosystem, no functional changes
