@@ -18,7 +18,7 @@ my role Tuxic {
             $ident eq 'sub'|'if'|'elsif'|'while'|'until'|'for'
               || $*R.is-identifier-type([$ident])
         }>
-        <?before <.unsp>|\s*'('> \s* <![:]>
+        <?before <.unspace>|\s*'('> \s* <![:]>
         { $pos := $/.CURSOR.pos }
         <args>
 #        {    # XXX not yet supported in RakuAST
@@ -30,12 +30,12 @@ my role Tuxic {
 #        }
     }
 
-    token methodop($*DOTTY) {
+    token methodop(Mu $*DOTTY) {
         [
           | <longname>
             {
                 self.malformed("class-qualified postfix call")
-                  if ~$<longname> eq '::';
+                  if atkeyish($/, 'longname').Str eq '::';
             }
 
           | <?[$@&]>
