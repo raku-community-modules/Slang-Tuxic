@@ -1,6 +1,8 @@
 {
   "auth": "zef:raku-community-modules",
-  "authors": [ "Tobias Leich" ],
+  "authors": [
+    "Tobias Leich"
+  ],
   "build-depends": [
   ],
   "depends": {
@@ -19,7 +21,7 @@
   },
   "resources": [
   ],
-  "source-url": "git://github.com/raku-community-modules/Slang-Tuxic.git",
+  "source-url": "https://github.com/raku-community-modules/Slang-Tuxic.git",
   "support": {
     "bugtracker": "https://github.com/raku-community-moduled/Slang-Tuxic/issues",
     "email": "community@raku.org",

@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/raku-community-modules/Slang-Tuxic/workflows/test/badge.svg)](https://github.com/raku-community-modules/Slang-Tuxic/actions)
+[![Actions Status](https://github.com/raku-community-modules/Slang-Tuxic/actions/workflows/linux.yml/badge.svg)](https://github.com/raku-community-modules/Slang-Tuxic/actions) [![Actions Status](https://github.com/raku-community-modules/Slang-Tuxic/actions/workflows/macos.yml/badge.svg)](https://github.com/raku-community-modules/Slang-Tuxic/actions) [![Actions Status](https://github.com/raku-community-modules/Slang-Tuxic/actions/workflows/windows.yml/badge.svg)](https://github.com/raku-community-modules/Slang-Tuxic/actions)
 
 NAME
 ====
@@ -26,17 +26,19 @@ The `Slang::Tuxic` module adapts the Raku Programming Language syntax to allow y
 
 Be aware that this introduces ambiguous situations, like when you want to pass a List to a sub, or when you need parenthesis around the condition after the keywords `if`, `while` and so on.
 
-AUTHOR
-======
+AUTHORS
+=======
 
-Tobias Leich (FROGGS)
+  * Tobias Leich (FROGGS)
 
 Source can be located at: https://github.com/raku-community-modules/Slang-Tuxic . Comments and Pull Requests are welcome.
 
 COPYRIGHT AND LICENSE
 =====================
 
-Copyright 2014-2018 Tobias Leich, 2023 Raku Community
+Copyright 2014 - 2018 Tobias Leich
+
+Copyright 2023 - 2025 Raku Community
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 
