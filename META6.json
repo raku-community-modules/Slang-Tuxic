@@ -1,11 +1,16 @@
 {
   "auth": "zef:raku-community-modules",
+  "authors": [ "Tobias Leich" ],
   "build-depends": [
   ],
-  "depends": [
-    "Slangify:ver<0.0.3+>:auth<zef:lizmat>"
-  ],
-  "description": "allow whitespace between subroutine and the opening parenthesis",
+  "depends": {
+    "runtime": {
+      "requires": [
+        "Slangify:ver<0.0.4+>:auth<zef:lizmat>"
+      ]
+    }
+  },
+  "description": "Allow whitespace between subroutine and the opening parenthesis",
   "license": "Artistic-2.0",
   "name": "Slang::Tuxic",
   "perl": "6.d",
@@ -15,11 +20,16 @@
   "resources": [
   ],
   "source-url": "git://github.com/raku-community-modules/Slang-Tuxic.git",
+  "support": {
+    "bugtracker": "https://github.com/raku-community-moduled/Slang-Tuxic/issues",
+    "email": "community@raku.org",
+    "source": "git://github.com/raku-community-modules/Slang-Tuxic.git"
+  },
   "tags": [
     "SLANG",
     "WHITESPACE"
   ],
   "test-depends": [
   ],
-  "version": "0.0.4"
+  "version": "0.0.5"
 }

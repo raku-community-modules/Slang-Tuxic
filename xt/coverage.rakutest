@@ -1,0 +1,12 @@
+use Test::Coverage;
+
+default-coverage-setup;
+
+run;
+%*ENV<RAKUDO_RAKUAST>=1;
+run;
+
+todo "Special cases in grammar need to be tested for still";
+must-be-complete;
+
+# vim: expandtab shiftwidth=4

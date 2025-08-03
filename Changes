@@ -1,6 +1,11 @@
 Revision history for Slang::Tuxic
   
 {{$NEXT}}
+    - Modernized META6.json and docs
+    - Added CI badge for each OS
+    - Bump dependency on Slangify
+    - Update copyright year
+    - Added initial source SBOM
 
 0.0.4  2023-09-25T17:14:52+02:00
     - Bump dependency on Slangify
